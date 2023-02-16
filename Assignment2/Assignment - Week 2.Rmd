@@ -1,0 +1,50 @@
+---
+title: "Developing Data Products - Week 2 Assignment"
+author: "Al Richardson"
+output: html_document
+---
+
+```{r setup, include=F, message=F}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##### Begun: 2023-02-10
+##### Knitted: `r Sys.Date()`
+
+## Map Of Horrors
+
+This is a map locating a few locations (all but one, fictional) in which some classic horror stories take place. At this point the locations are:
+
+* Arkham, Massachusetts, USA (from H.P. Lovecraft)
+* Miskatonic University, USA, in Arkham, Massachusetts (from H.P. Lovecraft)
+* Dunwich, Massachusetts, USA (from H.P. Lovecraft)
+* Innsmouth, Massachusetts, USA (from H.P. Lovecraft)
+* The Mountains Of Madness, Antarctica (from H.P. Lovecraft)
+* Jerusalem's Lot, Maine, USA (from Stephen King)
+* The Amityvill House, Amityville, New York, USA, Massachusetts (from a real event, and subsequent fictional novel by J. Anson)
+
+```{r map, echo=F, warning=F, message=F}
+library(leaflet)
+
+mLocations <- data.frame(name = c("Arkham, MA", "Miskatonic University, Arkham, MA", 
+                                  "Dunwich, MA", "Innsmouth, MA", 
+                                  "Boundary Of The Mountains Of Madness",
+                                  "Boundary Of The Mountains Of Madness",
+                                  "Jerusalem\'s Lot, ME", 
+                                  "The Amityville Horror House, Amityville, NY"),
+                        stories = c(12, 10, 1, 4, 10, 10, 10, 15),
+                        lat = c(42.5839, 42.5894, 42.6903, 42.7052, -70.0, 
+                                -77.0, 45.9235, 40.6667),
+                        lng = c(-70.8389, -70.8211, -71.4574, -70.8057, 100.0, 
+                                70.0, -69.5799, -73.4148))
+
+mL <- mLocations %>% 
+  leaflet() %>% 
+  addTiles() %>%
+  addMarkers(lat = mLocations$lat, lng = mLocations$lng) %>%
+  addCircles(weight = 1, radius = mLocations$stories * 300) %>% 
+  setView(lat = 43.0, lng = -70.0, zoom = 7)
+
+mL
+
+```
