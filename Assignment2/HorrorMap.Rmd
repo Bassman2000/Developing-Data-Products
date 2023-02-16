@@ -1,5 +1,5 @@
 ---
-title: "Developing Data Products - Week 2 Assignment"
+title: "Developing Data Products - Week 2 Assignment - Horror Map"
 author: "Al Richardson"
 output: html_document
 ---
