@@ -7,10 +7,10 @@ output: html_document
 ```{r setup, include=F, message=F}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
+<hr/>
 ##### Begun: 2023-02-10
 ##### Knitted: `r Sys.Date()`
-
+<hr/>
 This is a map locating a few locations (all but one, fictional) in which some classic horror stories take place. At this point the locations are:
 
 * Arkham, Massachusetts, USA (from H.P. Lovecraft)
