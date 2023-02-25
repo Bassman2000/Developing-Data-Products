@@ -1,0 +1,57 @@
+---
+title: "Surface Plot"
+author: "Al Richardson"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plotly)
+library(tidyr)
+```
+
+## Introduction
+
+- This is an example of a **plotly** 3-d-surface plot. 
+- It is in the form of an ioslides presentation.
+- The plot is based on a function of two variables, rather than empirical data:
+$$\begin{align}
+v &= \big\vert x\cdot y + 0.05\big\vert \\
+f(x,y) &= \vert 1 - x^2\vert^{0.63} \cdot  \log(v)  \cdot \sin^3(y)
+\cdot \cos\Big[x \cdot \log\big(\vert x \vert\big) \Big] 
+\end{align}$$
+
+```{r, function, echo=FALSE}
+
+f_x_y <- function(x, y){
+  v = abs(x*y + 0.05)
+  z <- (abs(1 - x^2))^(0.63) * log(v) * sin(y)^3 * 
+    cos(x * log(abs(x)))
+  
+  return(z)
+}
+
+```
+
+## The Payoff
+
+```{r, figr, echo=FALSE}
+xSeq = seq(-4.0, 4.0, 0.1)
+ySeq = seq(-4.0, 4.0, 0.1)
+
+f <- matrix(0.0, nrow = length(xSeq), ncol = length(ySeq))
+
+for (i in 1:length(xSeq)){
+   for (j in 1:length(ySeq)){
+     f[i, j] <- round(f_x_y(xSeq[i], ySeq[j]),3)
+   }
+}
+
+scene = list(camera = list(eye = list(x = -1.5, y = 1.5, z = 0.1)))
+
+figr <- plot_ly(z = ~f) %>% 
+  add_surface() %>% 
+  layout(title = 'A Fine 3-d Surface Plot', scene = scene)
+figr
+```
