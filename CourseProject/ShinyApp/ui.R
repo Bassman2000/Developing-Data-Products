@@ -27,9 +27,10 @@ fluidPage(
   sidebarLayout(
     sidebarPanel(
       radioButtons("fStyle","Choose Fractal Style", 
-                   choices = list("Matrix", "Iterated Function"), selected = "Matrix"),
+                   choices = list("Iterated Function", "Matrix"),
+                   selected = "Iterated Function"),
       selectInput("fPatt", "Fractal Pattern:", 
-                  choices = listMatrices(), selected = 0),
+                  choices = listFractals(), selected = 0),
     ),
     
     mainPanel(plotOutput("distPlot") %>% withSpinner(color = "purple"))
