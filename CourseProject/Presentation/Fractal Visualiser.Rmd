@@ -3,6 +3,8 @@ title: "Developing Data Products Fractal Visualiser"
 author: "Al Richardson"
 date: "2023-03-04"
 output: ioslides_presentation
+theme: NULL
+#css: mystyles.css
 ---
 
 ```{r setup, include=FALSE}
@@ -12,22 +14,21 @@ knitr::opts_chunk$set(echo = FALSE)
 ```{css, echo=FALSE}
 .Kronecker {
   background-color: lightgrey;
-  border: 1px solid black;
   font-size: 18px;
   line-height: 23px;
   width: 800px;
   margin-left: 50px;
   margin-bottom: 50px;
 }
+
+slides >slide.current{
+  background: #e2ded3 !important;
+}
+
 ```
 
 ## Introduction
-```{css}
-slides > slide {
-  background: linear-gradient(#ffffff, #ffffff 85%, #ffffff);
-  background-color: white;
-  }
-```
+
 The Shiny application allows one to view a selection of fractal images. The selection of fractals is not even close to being exhaustive.<br><br><br><br><br><br>
 
 <div style='padding:0.1em; background-color:#cdddf4'><span style='font-size:75%'>
@@ -59,6 +60,7 @@ The user can select between IFS and KP types and then select a specific example 
 </p></span></div>
 
 ## Simplified Algorithm
+
 ```{r class.source="Kronecker", echo = TRUE}
 
 f = matrix(c(0,1,0, 
@@ -78,18 +80,25 @@ for (i in 1:m) {
     if(mat[i,j]==0) next 
     else {
       d=d+1 
-      X[d]=i 
-      Y[d]=j 
+      X[d]=i; Y[d]=j 
     } 
   }
 }
 ```
+
 ## A Simple KP-Type Fractal
-```{r, fig.width=6, fig.height=6, fig.align='center'}
-plot(X,Y, pch=3, col = "blue", 
-     axes=FALSE, xlab="", ylab="", cex=1.0)
-box(col="black")
+```{css}
+
 ```
 
+
+<div id="fig">
+```{r , fig.width=6, fig.height=6, fig.align='center'}
+par(bg = "#e2ded3")
+plot(x = X, y = Y, pch=3, col = "blue", axes=FALSE, xlab="", ylab="", cex=1.0)
+
+
+```
+</div>
 
 
