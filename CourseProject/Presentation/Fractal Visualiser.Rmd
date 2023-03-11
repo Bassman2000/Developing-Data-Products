@@ -86,7 +86,8 @@ for (i in 1:m) {
 ```
 ## A Simple KP-Type Fractal
 ```{r, fig.width=6, fig.height=6, fig.align='center'}
-plot(X,Y, pch=3, col = "blue", axes=FALSE, xlab="", ylab="", cex=1.0)
+plot(X,Y, pch=3, col = "blue", 
+     axes=FALSE, xlab="", ylab="", cex=1.0)
 box(col="black")
 ```
 
