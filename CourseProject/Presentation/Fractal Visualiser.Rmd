@@ -4,7 +4,7 @@ author: "Al Richardson"
 date: "2023-03-04"
 output: ioslides_presentation
 theme: NULL
-#css: mystyles.css
+extra_dependencies: ["float"]
 ---
 
 ```{r setup, include=FALSE}
@@ -59,14 +59,14 @@ The user can select between IFS and KP types and then select a specific example 
     The generation of some famous fractals, such as the Mandelbrot set and the Julia set, are significantly more resource intensive, and are not included here.
 </p></span></div>
 
-## Simplified Algorithm
+## Example Simplified Algorithm
 
 ```{r class.source="Kronecker", echo = TRUE}
 
-f = matrix(c(0,1,0, 
-             1,1,1, 
-             0,1,0), nrow = 3, ncol = 3)
-  
+f = matrix(c(1,0,1, 
+             0,1,0, 
+             1,0,1), nrow = 3, ncol = 3)
+
 mat <- f
 for(i in 1:3) mat <- mat%x%f
 
@@ -86,19 +86,19 @@ for (i in 1:m) {
 }
 ```
 
-## A Simple KP-Type Fractal
+---
 ```{css}
-
+#figr{
+  margin-top: -40px !important;
+  margin-left: -15px !important;
+}
 ```
 
-
-<div id="fig">
-```{r , fig.width=6, fig.height=6, fig.align='center'}
+<div id = "figr">
+```{r , fig.width=7, fig.height=7, fig.align='center'}
 par(bg = "#e2ded3")
-plot(x = X, y = Y, pch=3, col = "blue", axes=FALSE, xlab="", ylab="", cex=1.0)
-
+plot(x = X, y = Y, pch=3, col = "blue", axes=FALSE, cex=1.0, 
+     xlab="", ylab="", main = 'Example KP Fractal', cex.main = 3)
 
 ```
 </div>
-
-
