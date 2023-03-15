@@ -26,10 +26,10 @@ fluidPage(
   # Sidebar with a drop down of available fractals
   sidebarLayout(
     sidebarPanel(
-      radioButtons("fStyle","Choose Fractal Style", 
+      radioButtons("fStyle","Choose A Fractal Style", 
                    choices = list("Iterated Function", "Matrix"),
                    selected = "Iterated Function"),
-      selectInput("fPatt", "Fractal Pattern:", 
+      selectInput("fPatt", "Select A Fractal Pattern:", 
                   choices = listFractals(), selected = 0),
     ),
     
